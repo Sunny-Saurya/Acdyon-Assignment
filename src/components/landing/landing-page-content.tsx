@@ -3,7 +3,7 @@
 import { useEffect, useRef } from "react"
 import Image from "next/image"
 import Link from "next/link"
-import { Check, Star, ArrowRight, Zap, Bell, Code2, BarChart3, Shield, Users } from "lucide-react"
+import { Check, Star, ArrowRight, Zap, Bell, Code2, BarChart3, Shield, Users, Pencil, Sparkles } from "lucide-react"
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter"
 import { oneLight } from "react-syntax-highlighter/dist/esm/styles/prism"
 
@@ -425,110 +425,168 @@ export function LandingPageContent() {
         </FlowSection>
 
         {/* Slide 7: Pricing */}
-        <FlowSection id="pricing" aria-label="Pricing" style={{ backgroundColor: '#1A3DE8', color: '#fff' }}>
-          <p className="text-xs font-bold uppercase tracking-[0.2em] text-white/50">07 — Pricing</p>
-          <hr className="my-[2vw] border-none border-t border-white/20" />
-          
-          <div className="flex flex-col lg:flex-row justify-between items-start gap-8 lg:gap-12 my-auto w-full">
-            <div className="flex-1 space-y-6">
-              <h2 className="text-[clamp(2.5rem,8vw,10rem)] font-extrabold leading-[0.85] uppercase tracking-tighter text-white">
-                Simple
-                <br />
-                Fair
-                <br />
-                Plans
-              </h2>
-              <p className="max-w-[45ch] text-[clamp(1rem,2vw,1.5rem)] font-normal leading-relaxed text-white/90">
-                Choose the plan that fits your stage. From side projects to fast-growing startups, we've got you covered.
-              </p>
-              <div className="space-y-3 pt-2">
-                <div className="flex items-center gap-3">
-                  <div className="size-5 rounded-full bg-white/10 flex items-center justify-center">
-                    <Check className="size-3 text-white" />
-                  </div>
-                  <span className="text-sm font-medium">Sub-second delivery to Discord</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <div className="size-5 rounded-full bg-white/10 flex items-center justify-center">
-                    <Check className="size-3 text-white" />
-                  </div>
-                  <span className="text-sm font-medium">Developer-first integration API</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <div className="size-5 rounded-full bg-white/10 flex items-center justify-center">
-                    <Check className="size-3 text-white" />
-                  </div>
-                  <span className="text-sm font-medium">No credit card required for Free plan</span>
-                </div>
-              </div>
-            </div>
-            
-            <div className="w-full lg:w-[50%] flex flex-col sm:flex-row gap-4 self-center lg:mt-0 mt-6">
-              {/* Free Plan Card */}
-              <GlassCard variant="neo" className="flex-1 p-6 bg-black/40 border-white/10 flex flex-col justify-between min-h-[350px]">
-                <div>
-                  <h3 className="text-xs font-bold uppercase tracking-wider text-white/60 mb-1">Hobby</h3>
-                  <div className="flex items-baseline gap-1 mb-4">
-                    <span className="text-4xl font-extrabold text-white">$0</span>
-                    <span className="text-xs text-white/60 font-semibold">/ month</span>
-                  </div>
-                  <ul className="space-y-2.5 text-xs text-white/80 font-medium mb-6">
-                    <li className="flex items-center gap-2">
-                      <Check className="size-3 text-white/60" />
-                      <span>1,000 events / month</span>
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <Check className="size-3 text-white/60" />
-                      <span>3 webhooks limit</span>
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <Check className="size-3 text-white/60" />
-                      <span>3-day event history</span>
-                    </li>
-                  </ul>
-                </div>
-                <ModernButton href="/sign-up" variant="secondary" className="w-full text-xs py-2">
-                  Get Started
-                </ModernButton>
-              </GlassCard>
+        <FlowSection id="pricing" aria-label="Pricing" style={{ backgroundColor: '#ffffff', color: '#000000' }} className="bg-[radial-gradient(#e5e7eb_1.5px,transparent_1.5px)] [background-size:24px_24px] flex flex-col justify-between">
+          <div className="w-full text-center mt-2">
+            <p className="text-blue-600 font-extrabold uppercase tracking-widest text-xs sm:text-sm font-mono">Simple Pricing</p>
+            <h2 className="text-[clamp(2rem,6vw,4rem)] font-black text-black leading-none tracking-tight mt-2 uppercase font-heading">
+              Simple Fair Plans
+            </h2>
+            <p className="text-gray-500 font-medium max-w-[55ch] text-center mx-auto mt-2 text-sm sm:text-base font-heading">
+              Choose the plan that fits your stage. From side projects to fast-growing startups, we've got you covered.
+            </p>
+          </div>
 
-              {/* Pro Plan Card */}
-              <GlassCard variant="neo" className="flex-1 p-6 bg-white/10 border-white/20 flex flex-col justify-between min-h-[350px] relative overflow-hidden">
-                <div className="absolute top-3 right-3 bg-white text-[#6D28D9] text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full">
-                  Popular
-                </div>
-                <div>
-                  <h3 className="text-xs font-bold uppercase tracking-wider text-white mb-1">Growth Pro</h3>
-                  <div className="flex items-baseline gap-1 mb-4">
-                    <span className="text-4xl font-extrabold text-white">$29</span>
-                    <span className="text-xs text-white/80 font-semibold">/ month</span>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-6 lg:gap-8 max-w-6xl mx-auto w-full px-4 my-auto">
+            {/* Developer Card */}
+            <div className="relative bg-white text-black border-[3px] border-black rounded-2xl p-6 flex flex-col justify-between shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] md:-rotate-[1deg] hover:rotate-0 hover:scale-[1.02] transition-all duration-300 min-h-[440px]">
+              <div>
+                <div className="flex justify-between items-start mb-4">
+                  <div>
+                    <h3 className="font-heading font-extrabold text-2xl tracking-tight text-black">Developer</h3>
+                    <p className="text-gray-500 text-xs mt-0.5 font-medium">Perfect for side projects</p>
                   </div>
-                  <ul className="space-y-2.5 text-xs text-white/95 font-medium mb-6">
-                    <li className="flex items-center gap-2">
-                      <Check className="size-3 text-white" />
-                      <span>Unlimited events</span>
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <Check className="size-3 text-white" />
-                      <span>Unlimited webhooks</span>
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <Check className="size-3 text-white" />
-                      <span>30-day event history</span>
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <Check className="size-3 text-white" />
-                      <span>Team collaboration</span>
-                    </li>
-                  </ul>
+                  <div className="w-12 h-12 rounded-full border-2 border-black flex items-center justify-center bg-orange-100 text-orange-600">
+                    <Pencil className="size-5" />
+                  </div>
                 </div>
-                <ModernButton href="/sign-up" variant="primary" className="w-full text-xs py-2 bg-white text-[#6D28D9] hover:bg-white/90">
-                  Upgrade Now
-                </ModernButton>
-              </GlassCard>
+                <div className="flex items-baseline gap-1 my-6">
+                  <span className="text-5xl font-black text-black tracking-tight">$0</span>
+                  <span className="text-gray-400 text-sm font-bold lowercase">/ month</span>
+                </div>
+                <ul className="space-y-3.5 mb-6">
+                  <li className="flex items-center gap-3 text-sm font-bold text-gray-800">
+                    <div className="size-5 rounded-full border-[1.5px] border-black flex items-center justify-center shrink-0 bg-white">
+                      <Check className="size-3 text-black stroke-[3]" />
+                    </div>
+                    <span>1,000 events / month</span>
+                  </li>
+                  <li className="flex items-center gap-3 text-sm font-bold text-gray-800">
+                    <div className="size-5 rounded-full border-[1.5px] border-black flex items-center justify-center shrink-0 bg-white">
+                      <Check className="size-3 text-black stroke-[3]" />
+                    </div>
+                    <span>3 active webhooks</span>
+                  </li>
+                  <li className="flex items-center gap-3 text-sm font-bold text-gray-800">
+                    <div className="size-5 rounded-full border-[1.5px] border-black flex items-center justify-center shrink-0 bg-white">
+                      <Check className="size-3 text-black stroke-[3]" />
+                    </div>
+                    <span>Discord integrations</span>
+                  </li>
+                  <li className="flex items-center gap-3 text-sm font-bold text-gray-800">
+                    <div className="size-5 rounded-full border-[1.5px] border-black flex items-center justify-center shrink-0 bg-white">
+                      <Check className="size-3 text-black stroke-[3]" />
+                    </div>
+                    <span>1-day log retention</span>
+                  </li>
+                </ul>
+              </div>
+              <Link href="/sign-up" className="w-full py-3 bg-white hover:bg-gray-50 text-black border-[2px] border-black rounded-xl font-extrabold text-sm uppercase tracking-wider shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] transition-all active:translate-x-[2px] active:translate-y-[2px] active:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] flex items-center justify-center cursor-pointer">
+                Get Started
+              </Link>
+            </div>
+
+            {/* Pro Card (Popular) */}
+            <div className="relative bg-white text-black border-[3px] border-black rounded-2xl p-6 flex flex-col justify-between shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] md:-rotate-[1.5deg] hover:rotate-0 hover:scale-[1.02] transition-all duration-300 min-h-[440px]">
+              <div className="absolute -top-3.5 -right-2.5 bg-[#FFB01F] text-black font-black text-[10px] px-3 py-1.5 rounded-full border-2 border-black uppercase tracking-wider rotate-[6deg] shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] select-none">
+                Popular!
+              </div>
+              <div>
+                <div className="flex justify-between items-start mb-4">
+                  <div>
+                    <h3 className="font-heading font-extrabold text-2xl tracking-tight text-black">Pro</h3>
+                    <p className="text-gray-500 text-xs mt-0.5 font-medium">For serious creators</p>
+                  </div>
+                  <div className="w-12 h-12 rounded-full border-2 border-black flex items-center justify-center bg-blue-100 text-blue-600">
+                    <Star className="size-5 fill-blue-600/10" />
+                  </div>
+                </div>
+                <div className="flex items-baseline gap-1 my-6">
+                  <span className="text-5xl font-black text-black tracking-tight">$9</span>
+                  <span className="text-gray-400 text-sm font-bold lowercase">/ month</span>
+                </div>
+                <ul className="space-y-3.5 mb-6">
+                  <li className="flex items-center gap-3 text-sm font-bold text-gray-800">
+                    <div className="size-5 rounded-full border-[1.5px] border-black flex items-center justify-center shrink-0 bg-white">
+                      <Check className="size-3 text-black stroke-[3]" />
+                    </div>
+                    <span>50,000 events / month</span>
+                  </li>
+                  <li className="flex items-center gap-3 text-sm font-bold text-gray-800">
+                    <div className="size-5 rounded-full border-[1.5px] border-black flex items-center justify-center shrink-0 bg-white">
+                      <Check className="size-3 text-black stroke-[3]" />
+                    </div>
+                    <span>Unlimited webhooks</span>
+                  </li>
+                  <li className="flex items-center gap-3 text-sm font-bold text-gray-800">
+                    <div className="size-5 rounded-full border-[1.5px] border-black flex items-center justify-center shrink-0 bg-white">
+                      <Check className="size-3 text-black stroke-[3]" />
+                    </div>
+                    <span>Discord & Slack alerts</span>
+                  </li>
+                  <li className="flex items-center gap-3 text-sm font-bold text-gray-800">
+                    <div className="size-5 rounded-full border-[1.5px] border-black flex items-center justify-center shrink-0 bg-white">
+                      <Check className="size-3 text-black stroke-[3]" />
+                    </div>
+                    <span>7-day log retention</span>
+                  </li>
+                </ul>
+              </div>
+              <Link href="/sign-up" className="w-full py-3 bg-[#FFB01F] hover:bg-[#FFA500] text-black border-[2px] border-black rounded-xl font-extrabold text-sm uppercase tracking-wider shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] transition-all active:translate-x-[2px] active:translate-y-[2px] active:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] flex items-center justify-center cursor-pointer">
+                Get Started
+              </Link>
+            </div>
+
+            {/* Team Card */}
+            <div className="relative bg-white text-black border-[3px] border-black rounded-2xl p-6 flex flex-col justify-between shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] md:rotate-[1.5deg] hover:rotate-0 hover:scale-[1.02] transition-all duration-300 min-h-[440px]">
+              <div>
+                <div className="flex justify-between items-start mb-4">
+                  <div>
+                    <h3 className="font-heading font-extrabold text-2xl tracking-tight text-black">Team</h3>
+                    <p className="text-gray-500 text-xs mt-0.5 font-medium">For scaling startups</p>
+                  </div>
+                  <div className="w-12 h-12 rounded-full border-2 border-black flex items-center justify-center bg-gray-100 text-gray-800">
+                    <Sparkles className="size-5" />
+                  </div>
+                </div>
+                <div className="flex items-baseline gap-1 my-6">
+                  <span className="text-5xl font-black text-black tracking-tight">$29</span>
+                  <span className="text-gray-400 text-sm font-bold lowercase">/ month</span>
+                </div>
+                <ul className="space-y-3.5 mb-6">
+                  <li className="flex items-center gap-3 text-sm font-bold text-gray-800">
+                    <div className="size-5 rounded-full border-[1.5px] border-black flex items-center justify-center shrink-0 bg-white">
+                      <Check className="size-3 text-black stroke-[3]" />
+                    </div>
+                    <span>500,000 events / month</span>
+                  </li>
+                  <li className="flex items-center gap-3 text-sm font-bold text-gray-800">
+                    <div className="size-5 rounded-full border-[1.5px] border-black flex items-center justify-center shrink-0 bg-white">
+                      <Check className="size-3 text-black stroke-[3]" />
+                    </div>
+                    <span>Advanced event filters</span>
+                  </li>
+                  <li className="flex items-center gap-3 text-sm font-bold text-gray-800">
+                    <div className="size-5 rounded-full border-[1.5px] border-black flex items-center justify-center shrink-0 bg-white">
+                      <Check className="size-3 text-black stroke-[3]" />
+                    </div>
+                    <span>Unlimited team seats</span>
+                  </li>
+                  <li className="flex items-center gap-3 text-sm font-bold text-gray-800">
+                    <div className="size-5 rounded-full border-[1.5px] border-black flex items-center justify-center shrink-0 bg-white">
+                      <Check className="size-3 text-black stroke-[3]" />
+                    </div>
+                    <span>30-day log retention</span>
+                  </li>
+                </ul>
+              </div>
+              <Link href="/sign-up" className="w-full py-3 bg-white hover:bg-gray-50 text-black border-[2px] border-black rounded-xl font-extrabold text-sm uppercase tracking-wider shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] transition-all active:translate-x-[2px] active:translate-y-[2px] active:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] flex items-center justify-center cursor-pointer">
+                Get Started
+              </Link>
             </div>
           </div>
-          <hr className="mt-auto mb-[2vw] border-none border-t border-white/20" />
+          <div className="mb-2 w-full text-center text-xs font-mono uppercase tracking-wider text-black/35 select-none">
+            ✦ NO CREDIT CARD REQUIRED TO TRY
+          </div>
         </FlowSection>
       </FlowArt>
 
