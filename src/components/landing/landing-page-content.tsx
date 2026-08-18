@@ -16,7 +16,7 @@ import {
 } from "@/components/landing"
 import { DiscordMessage } from "@/components/discord-message"
 import ClientFeedback from "@/components/ui/testimonial"
-import { CustomCursor } from "@/components/ui/custom-cursor"
+
 
 const codeSnippet = `await fetch("https://cronguard.sh/api/v1/events", {
   method: "POST",
@@ -123,7 +123,6 @@ export function LandingPageContent() {
   return (
     <GSAPProvider>
       <div className={`${isRetroMode ? "retro-mode-active" : ""} ${isGlitching ? "retro-glitch" : ""}`}>
-        <CustomCursor />
         <ScrollProgress />
       
       <FlowArt aria-label="CronGuard Product Presentation">
