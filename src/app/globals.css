@@ -1,0 +1,242 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Wix+Madefor+Display:wght@400;500;600;700;800&display=swap');
+@import "tailwindcss";
+@plugin "tailwindcss-animate";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-primaryColor: var(--color-primary);
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+  
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+
+  --font-sans: "Inter", sans-serif;
+  --font-heading: "Wix Madefor Display", sans-serif;
+  --font-mono: monospace;
+}
+
+@layer base {
+  :root {
+    /* Light Mode - Clean, crisp white background with subtle grays */
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    
+    /* Primary brand color - A modern, soft indigo/blue */
+    --primary: 243 75% 59%; 
+    --primary-foreground: 210 40% 98%;
+    
+    /* Secondary - subtle gray for standard backgrounds */
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    
+    /* Soft borders and rings */
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 243 75% 59%;
+    --radius: 0.75rem; /* Generous rounded corners */
+  }
+
+  .dark {
+    /* Dark Mode - Deep gray, not pure black */
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    
+    --primary: 243 75% 59%; 
+    --primary-foreground: 210 40% 98%;
+    
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 243 75% 59%;
+    --radius: 0.75rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-sans);
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    letter-spacing: -0.025em; /* Modern tight tracking for headings */
+    font-weight: 700;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+    overflow-y: overlay;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(120, 120, 120, 0.35) transparent;
+  }
+
+  /* Custom scrollbar styling for Webkit engines */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: rgba(120, 120, 120, 0.35);
+    border-radius: 10px;
+    border: 2px solid transparent;
+    background-clip: padding-box;
+    transition: background-color 0.2s ease-in-out;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(120, 120, 120, 0.6);
+    border: 2px solid transparent;
+    background-clip: padding-box;
+  }
+}
+
+/* Modern Playful Utilities */
+@layer utilities {
+  .modern-card:not([class*="bg-"]) {
+    background-color: var(--color-card);
+  }
+
+  .modern-card {
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+    transition: all 0.2s ease-in-out;
+  }
+
+  .dark .modern-card {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2), 0 2px 4px -1px rgba(0, 0, 0, 0.1);
+  }
+
+  .modern-card-hover:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  }
+
+  .dark .modern-card-hover:hover {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.2);
+  }
+
+  .modern-btn {
+    font-family: var(--font-sans);
+    border-radius: calc(var(--radius-lg) - 4px);
+    font-size: 0.875rem;
+    font-weight: 500;
+    padding: 0.5rem 1.25rem;
+    transition: all 0.15s ease-in-out;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid transparent;
+  }
+
+  .modern-btn:active {
+    transform: scale(0.97);
+  }
+
+  .modern-btn-primary {
+    background-color: var(--color-primary);
+    color: var(--color-primary-foreground);
+    box-shadow: 0 4px 14px 0 rgba(79, 70, 229, 0.39);
+  }
+
+  .modern-btn-primary:hover {
+    background-color: hsl(243 75% 55%);
+    box-shadow: 0 6px 20px rgba(79, 70, 229, 0.23);
+  }
+
+  .modern-btn-secondary {
+    background-color: var(--color-secondary);
+    color: var(--color-secondary-foreground);
+    border-color: var(--color-border);
+  }
+  
+  .modern-btn-secondary:hover {
+    background-color: var(--color-muted);
+  }
+
+  .modern-divider {
+    height: 1px;
+    background-color: var(--color-border);
+    border: none;
+    margin: 2rem 0;
+  }
+
+  /* Subtle Gradient Background */
+  .modern-bg-pattern {
+    background: radial-gradient(circle at top center, rgba(79, 70, 229, 0.05) 0%, transparent 40%),
+                radial-gradient(circle at bottom right, rgba(168, 85, 247, 0.05) 0%, transparent 40%);
+    background-color: var(--color-background);
+  }
+  
+  .dark .modern-bg-pattern {
+    background: radial-gradient(circle at top center, rgba(79, 70, 229, 0.1) 0%, transparent 40%),
+                radial-gradient(circle at bottom right, rgba(168, 85, 247, 0.1) 0%, transparent 40%);
+    background-color: var(--color-background);
+  }
+}
