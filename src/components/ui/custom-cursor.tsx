@@ -45,8 +45,8 @@ export function CustomCursor() {
       }
 
       // Smooth trailing physics for the outer ring
-      ringX += (mouseX - ringX) * 0.15
-      ringY += (mouseY - ringY) * 0.15
+      ringX += (mouseX - ringX) * 0.12
+      ringY += (mouseY - ringY) * 0.12
       if (ringRef.current) {
         ringRef.current.style.transform = `translate3d(${ringX}px, ${ringY}px, 0)`
       }
@@ -97,23 +97,24 @@ export function CustomCursor() {
 
   return (
     <>
-      {/* Core pointer dot */}
-      <div
-        ref={dotRef}
-        className="fixed top-0 left-0 w-2 h-2 -ml-1 -mt-1 rounded-full bg-[#FD5200] pointer-events-none z-[9999] transition-transform duration-100 ease-out"
-        style={{
-          transform: "translate3d(0px, 0px, 0)",
-          scale: isHovered ? "0" : "1",
-        }}
-      />
-      {/* Outer trailing inverted ring */}
+      {/* Outer fluid trailing ring */}
       <div
         ref={ringRef}
-        className="fixed top-0 left-0 w-8 h-8 -ml-4 -mt-4 rounded-full border border-[#FD5200] pointer-events-none z-[9998] transition-all duration-200 ease-out mix-blend-difference bg-white/10"
+        className="fixed top-0 left-0 w-10 h-10 -ml-5 -mt-5 rounded-full border border-white pointer-events-none z-[9998] transition-all duration-300 ease-out mix-blend-difference"
         style={{
           transform: "translate3d(0px, 0px, 0)",
-          scale: isHovered ? "1.8" : "1",
-          borderColor: isHovered ? "#FD5200" : "rgba(255, 255, 255, 0.7)",
+          scale: isHovered ? "1.6" : "1",
+          backgroundColor: isHovered ? "rgba(255, 255, 255, 0.1)" : "transparent",
+          borderWidth: isHovered ? "1.5px" : "1px",
+        }}
+      />
+      {/* Inner lens pointer dot */}
+      <div
+        ref={dotRef}
+        className="fixed top-0 left-0 w-2 h-2 -ml-1 -mt-1 rounded-full bg-white pointer-events-none z-[9999] transition-transform duration-200 ease-out mix-blend-difference"
+        style={{
+          transform: "translate3d(0px, 0px, 0)",
+          scale: isHovered ? "4" : "1",
         }}
       />
     </>
