@@ -19,7 +19,9 @@ export function CustomCursor() {
       return
     }
 
-    setIsHidden(false)
+    setTimeout(() => {
+      setIsHidden(false)
+    }, 0)
 
     let mouseX = 0
     let mouseY = 0

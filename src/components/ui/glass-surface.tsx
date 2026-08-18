@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useState, useRef, useId, ReactNode, CSSProperties } from "react"
+import { useEffect, useState, useRef, useId, ReactNode, CSSProperties, useCallback } from "react"
 import "./glass-surface.css"
 
 interface GlassSurfaceProps {
@@ -57,12 +57,12 @@ const GlassSurface = ({
 
   const containerRef = useRef<HTMLDivElement>(null)
   const feImageRef = useRef<SVGFeImageElement>(null)
-  const redChannelRef = useRef<SVFDisplacementMapElement | any>(null)
-  const greenChannelRef = useRef<SVFDisplacementMapElement | any>(null)
-  const blueChannelRef = useRef<SVFDisplacementMapElement | any>(null)
-  const gaussianBlurRef = useRef<SVFGaussianBlurElement | any>(null)
+  const redChannelRef = useRef<SVGFEDisplacementMapElement | null>(null)
+  const greenChannelRef = useRef<SVGFEDisplacementMapElement | null>(null)
+  const blueChannelRef = useRef<SVGFEDisplacementMapElement | null>(null)
+  const gaussianBlurRef = useRef<SVGFEGaussianBlurElement | null>(null)
 
-  const generateDisplacementMap = () => {
+  const generateDisplacementMap = useCallback(() => {
     const rect = containerRef.current?.getBoundingClientRect()
     const actualWidth = rect?.width || 400
     const actualHeight = rect?.height || 200
@@ -88,11 +88,29 @@ const GlassSurface = ({
     `
 
     return `data:image/svg+xml,${encodeURIComponent(svgContent)}`
-  }
+  }, [borderWidth, redGradId, blueGradId, borderRadius, mixBlendMode, brightness, opacity, blur])
 
-  const updateDisplacementMap = () => {
+  const updateDisplacementMap = useCallback(() => {
     feImageRef.current?.setAttribute("href", generateDisplacementMap())
-  }
+  }, [generateDisplacementMap])
+
+  const supportsSVGFilters = useCallback(() => {
+    if (typeof window === "undefined" || typeof document === "undefined") {
+      return false
+    }
+
+    const isWebkit = /Safari/.test(navigator.userAgent) && !/Chrome/.test(navigator.userAgent)
+    const isFirefox = /Firefox/.test(navigator.userAgent)
+
+    if (isWebkit || isFirefox) {
+      return false
+    }
+
+    const div = document.createElement("div")
+    div.style.backdropFilter = `url(#${filterId})`
+
+    return div.style.backdropFilter !== ""
+  }, [filterId])
 
   useEffect(() => {
     updateDisplacementMap()
@@ -111,21 +129,14 @@ const GlassSurface = ({
 
     gaussianBlurRef.current?.setAttribute("stdDeviation", displace.toString())
   }, [
-    width,
-    height,
-    borderRadius,
-    borderWidth,
-    brightness,
-    opacity,
-    blur,
-    displace,
-    distortionScale,
+    updateDisplacementMap,
     redOffset,
     greenOffset,
     blueOffset,
+    distortionScale,
     xChannel,
     yChannel,
-    mixBlendMode,
+    displace,
   ])
 
   useEffect(() => {
@@ -140,33 +151,19 @@ const GlassSurface = ({
     return () => {
       resizeObserver.disconnect()
     }
-  }, [])
+  }, [updateDisplacementMap])
 
   useEffect(() => {
-    setTimeout(updateDisplacementMap, 0)
-  }, [width, height])
+    const timer = setTimeout(updateDisplacementMap, 0)
+    return () => clearTimeout(timer)
+  }, [width, height, updateDisplacementMap])
 
   useEffect(() => {
-    setSvgSupported(supportsSVGFilters())
-  }, [])
-
-  const supportsSVGFilters = () => {
-    if (typeof window === "undefined" || typeof document === "undefined") {
-      return false
-    }
-
-    const isWebkit = /Safari/.test(navigator.userAgent) && !/Chrome/.test(navigator.userAgent)
-    const isFirefox = /Firefox/.test(navigator.userAgent)
-
-    if (isWebkit || isFirefox) {
-      return false
-    }
-
-    const div = document.createElement("div")
-    div.style.backdropFilter = `url(#${filterId})`
-
-    return div.style.backdropFilter !== ""
-  }
+    const timer = setTimeout(() => {
+      setSvgSupported(supportsSVGFilters())
+    }, 0)
+    return () => clearTimeout(timer)
+  }, [supportsSVGFilters])
 
   const containerStyle = {
     ...style,

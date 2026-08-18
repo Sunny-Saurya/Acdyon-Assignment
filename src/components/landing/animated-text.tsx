@@ -61,9 +61,10 @@ export const CountUp = ({
   suffix?: string
 }) => {
   const el = useRef<HTMLSpanElement>(null)
-  const obj = useRef({ val: 0 }).current
+  const objRef = useRef({ val: 0 })
 
   useEffect(() => {
+    const obj = objRef.current
     gsap.to(obj, {
       val: end,
       duration,
@@ -73,7 +74,7 @@ export const CountUp = ({
         }
       },
     })
-  }, [end, duration, suffix, obj])
+  }, [end, duration, suffix])
 
   return <span ref={el} className={className} />
 }

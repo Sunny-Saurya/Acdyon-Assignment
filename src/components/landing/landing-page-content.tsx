@@ -1,21 +1,19 @@
 "use client"
 
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { Check, Star, ArrowRight, Zap, Bell, Code2, BarChart3, Shield, Users, Pencil, Sparkles } from "lucide-react"
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter"
 import { oneLight } from "react-syntax-highlighter/dist/esm/styles/prism"
+import { motion, AnimatePresence } from "framer-motion"
 
 import FlowArt, { FlowSection } from "@/components/ui/story-scroll"
 import {
   GSAPProvider,
-  GlassCard,
   ModernButton,
   ScrollProgress,
 } from "@/components/landing"
-import { MockDiscordUI } from "@/components/mock-discord-ui"
-import { AnimatedList } from "@/components/ui/animated-list"
 import { DiscordMessage } from "@/components/discord-message"
 import ClientFeedback from "@/components/ui/testimonial"
 import { CustomCursor } from "@/components/ui/custom-cursor"
@@ -36,10 +34,97 @@ const codeSnippet = `await fetch("https://cronguard.sh/api/v1/events", {
 })`
 
 export function LandingPageContent() {
+  const [isSimulating, setIsSimulating] = useState(false)
+  const [isRetroMode, setIsRetroMode] = useState(false)
+  const [isGlitching, setIsGlitching] = useState(false)
+  const [toast, setToast] = useState<{
+    show: boolean
+    title: string
+    content: Record<string, string>
+    badgeText?: string
+    badgeColor?: string
+  } | null>(null)
+
+  const simulateEvent = () => {
+    setIsSimulating(true)
+    setTimeout(() => {
+      setIsSimulating(false)
+      setToast({
+        show: true,
+        title: "🟢 Event Received: Stripe Sale",
+        content: {
+          Category: "sale",
+          Plan: "PRO",
+          Email: "zoe.martinez2001@email.com",
+          Amount: "$49.00",
+        },
+        badgeText: "SUCCESS",
+        badgeColor: "#43b581",
+      })
+
+      // Auto-hide toast after 6 seconds
+      setTimeout(() => {
+        setToast((prev) => (prev?.title.includes("Stripe Sale") ? null : prev))
+      }, 6000)
+    }, 1000)
+  }
+
+  const triggerEasterEgg = () => {
+    setIsGlitching(true)
+    setTimeout(() => {
+      setIsGlitching(false)
+      setIsRetroMode(true)
+      setToast({
+        show: true,
+        title: "🏆 Konami Code Activated!",
+        content: {
+          System: "CRONGUARD RETRO",
+          Status: "EASTER EGG UNLOCKED",
+          Message: "CRT Retro Mode initiated. Enjoy the grid!",
+          Developer: "@Rishav07-05",
+        },
+        badgeText: "EASTER EGG",
+        badgeColor: "#faa61a",
+      })
+    }, 350)
+  }
+
+  // Konami Code Sequence: Up, Up, Down, Down, Left, Right, Left, Right, B, A
+  useEffect(() => {
+    const konamiSequence = [
+      "ArrowUp",
+      "ArrowUp",
+      "ArrowDown",
+      "ArrowDown",
+      "ArrowLeft",
+      "ArrowRight",
+      "ArrowLeft",
+      "ArrowRight",
+      "b",
+      "a",
+    ]
+    let inputSequence: string[] = []
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      const key = e.key.length === 1 ? e.key.toLowerCase() : e.key
+      inputSequence.push(key)
+      inputSequence = inputSequence.slice(-konamiSequence.length)
+
+      if (JSON.stringify(inputSequence) === JSON.stringify(konamiSequence)) {
+        triggerEasterEgg()
+        inputSequence = []
+      }
+    }
+
+    window.addEventListener("keydown", handleKeyDown)
+    return () => window.removeEventListener("keydown", handleKeyDown)
+  }, [])
+
   return (
     <GSAPProvider>
-      <CustomCursor />
-      <ScrollProgress />
+      <div className={`${isRetroMode ? "retro-mode-active" : ""} ${isGlitching ? "retro-glitch" : ""}`}>
+        <CustomCursor />
+        <ScrollProgress />
       
       <FlowArt aria-label="CronGuard Product Presentation">
         
@@ -318,7 +403,7 @@ export function LandingPageContent() {
               </p>
             </div>
             
-            <div className="w-full lg:w-[45%] max-w-xl self-center">
+            <div className="w-full lg:w-[45%] max-w-xl self-center flex flex-col gap-4">
               <div className="border border-black/15 bg-black/5 overflow-hidden shadow-sm">
                 <div className="flex items-center gap-1.5 px-3 py-2 bg-black/10 border-b border-black/15 select-none">
                   <div className="flex gap-1">
@@ -338,6 +423,24 @@ export function LandingPageContent() {
                   </SyntaxHighlighter>
                 </div>
               </div>
+
+              <button
+                onClick={simulateEvent}
+                disabled={isSimulating}
+                className="w-full py-3 bg-[#0a0a0a] text-white hover:bg-neutral-800 disabled:bg-neutral-700 border-2 border-black rounded-xl font-extrabold text-sm uppercase tracking-wider shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-[3px] hover:translate-y-[3px] transition-all flex items-center justify-center cursor-pointer gap-2 select-none"
+              >
+                {isSimulating ? (
+                  <>
+                    <span className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                    Sending Event...
+                  </>
+                ) : (
+                  <>
+                    <Zap className="size-4 text-orange-500 fill-orange-500 animate-pulse" />
+                    Run Code & Push Alert
+                  </>
+                )}
+              </button>
             </div>
           </div>
 
@@ -450,7 +553,7 @@ export function LandingPageContent() {
               Simple Fair Plans
             </h2>
             <p className="text-gray-500 font-medium max-w-[55ch] text-center mx-auto mt-2 text-sm sm:text-base font-heading">
-              Choose the plan that fits your stage. From side projects to fast-growing startups, we've got you covered.
+              Choose the plan that fits your stage. From side projects to fast-growing startups, we&apos;ve got you covered.
             </p>
           </div>
 
@@ -776,6 +879,56 @@ export function LandingPageContent() {
           </div>
         </div>
       </footer>
+      
+      {/* Toast Notification Container */}
+      <div className="fixed bottom-6 right-6 z-[9999] pointer-events-none max-w-sm sm:max-w-md w-full px-4">
+        <AnimatePresence>
+          {toast && toast.show && (
+            <motion.div
+              initial={{ opacity: 0, y: 50, scale: 0.9 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: 20, scale: 0.95 }}
+              transition={{ type: "spring", stiffness: 300, damping: 25 }}
+              className="pointer-events-auto shadow-2xl rounded-lg overflow-hidden border border-black/40 bg-[#313338] p-4 text-left relative"
+            >
+              <DiscordMessage
+                avatarSrc="/brand-asset-profile-picture.png"
+                avatarAlt="CronGuard Bot"
+                username="CronGuard"
+                timestamp="Just now"
+                title={toast.title}
+                content={toast.content}
+                badgeText={toast.badgeText}
+                badgeColor={toast.badgeColor}
+              />
+              <button
+                onClick={() => setToast(null)}
+                className="absolute top-2 right-2 text-white/40 hover:text-white/80 cursor-pointer text-xs"
+              >
+                ✕
+              </button>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
+
+      {/* Floating Exit Button for Retro Mode */}
+      {isRetroMode && (
+        <button
+          onClick={() => {
+            setIsRetroMode(false)
+            setIsGlitching(true)
+            setTimeout(() => setIsGlitching(false), 350)
+          }}
+          className="fixed bottom-6 left-6 z-[9999] px-4 py-2 bg-red-600 border-2 border-[#39ff14] text-[#39ff14] font-mono text-xs uppercase tracking-wider rounded shadow-[4px_4px_0px_0px_#39ff14] hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all cursor-pointer font-bold animate-pulse"
+        >
+          Exit Retro Mode
+        </button>
+      )}
+
+      {/* Retro Mode CRT scanline overlay */}
+      {isRetroMode && <div className="crt-overlay" />}
+      </div>
     </GSAPProvider>
   )
 }
