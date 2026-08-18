@@ -191,7 +191,7 @@ export function LandingPageContent() {
         </FlowSection>
 
         {/* Slide 3: Problem / Value */}
-        <FlowSection id="problem" aria-label="Problem" style={{ backgroundColor: '#000000', color: '#fff' }}>
+        <FlowSection id="problem" aria-label="Problem" style={{ backgroundColor: '#FD5200', color: '#fff' }}>
           <p className="text-xs font-bold uppercase tracking-[0.2em] text-white/50 text-center">03 — Problem</p>
           <hr className="my-[2vw] border-none border-t border-white/20" />
           
@@ -597,13 +597,13 @@ export function LandingPageContent() {
         </FlowSection>
 
         {/* Slide 10: Final CTA */}
-        <FlowSection id="final-cta" aria-label="Join us" style={{ backgroundColor: '#000000', color: '#fff' }}>
-          <p className="text-xs font-bold uppercase tracking-[0.2em] text-white/50 text-center">10 — Join us</p>
+        <FlowSection id="final-cta" aria-label="Join us" style={{ backgroundColor: '#F5F0E8', color: '#000' }}>
+          <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#212121] text-center">10 — Join us</p>
           <hr className="my-[2vw] border-none border-t border-white/20" />
           
           <div className="flex flex-col items-center justify-center text-center max-w-4xl mx-auto my-auto space-y-8 w-full">
             <div className="space-y-6">
-              <h2 className="text-[clamp(3.5rem,9vw,9rem)] font-extrabold leading-[0.8] uppercase tracking-tighter text-white font-heading">
+              <h2 className="text-[clamp(9rem,5vw,5vw)]  font-extrabold leading-[0.8] uppercase tracking-tighter text-[#000] font-heading">
                 READY
                 <br />
                 TO KNOW
@@ -612,7 +612,7 @@ export function LandingPageContent() {
                 <br />
                 FAILS?
               </h2>
-              <p className="max-w-[45ch] text-[clamp(1.1rem,2.2vw,1.6rem)] font-normal leading-relaxed text-white/80 mx-auto">
+              <p className="max-w-[45ch] text-[clamp(1.1rem,2.2vw,1.6rem)] font-normal leading-relaxed text-[#212121] mx-auto">
                 Take control of your background jobs and application events. Get started in under 5 minutes.
               </p>
               <div className="pt-4">
