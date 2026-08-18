@@ -208,7 +208,7 @@ export function LandingPageContent() {
           
           <div className="flex flex-col items-center justify-center text-center max-w-4xl mx-auto my-auto space-y-8 w-full">
             <div className="space-y-6">
-              <h2 className="text-[clamp(3.5rem,9vw,9rem)] font-extrabold leading-[0.8] uppercase tracking-tighter text-white font-heading">
+              <h2 className="text-[clamp(2rem,7vw,7.5rem)] font-extrabold leading-[0.8] uppercase tracking-tighter text-white font-heading">
                 STOP
                 <br />
                 GUESSING.
@@ -416,7 +416,7 @@ export function LandingPageContent() {
           
           <div className="flex flex-col items-center justify-center text-center max-w-4xl mx-auto my-auto space-y-8 w-full">
             <div className="space-y-6">
-              <h2 className="text-[clamp(3.5rem,9vw,9rem)] font-extrabold leading-[0.8] uppercase tracking-tighter text-white font-heading">
+              <h2 className="text-[clamp(2rem,7vw,7.5rem)] font-extrabold leading-[0.8] uppercase tracking-tighter text-white font-heading">
                 BUILD
                 <br />
                 WITH
@@ -614,7 +614,7 @@ export function LandingPageContent() {
           
           <div className="flex flex-col items-center justify-center text-center max-w-4xl mx-auto my-auto space-y-8 w-full">
             <div className="space-y-6">
-              <h2 className="text-[clamp(9rem,5vw,5vw)]  font-extrabold leading-[0.8] uppercase tracking-tighter text-[#000] font-heading">
+              <h2 className="text-[clamp(2.2rem,8vw,7.5rem)] font-extrabold leading-[0.85] uppercase tracking-tighter text-[#000] font-heading">
                 READY
                 <br />
                 TO KNOW
