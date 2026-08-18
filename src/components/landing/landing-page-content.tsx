@@ -76,86 +76,226 @@ export function LandingPageContent() {
           <hr className="mt-auto mb-[2vw] border-none border-t border-white/20" />
         </FlowSection>
 
-        {/* Slide 2: The Mission / Capabilities */}
-        <FlowSection id="features" aria-label="The mission" style={{ backgroundColor: '#000', color: '#fff' }}>
-          <p className="text-xs font-bold uppercase tracking-[0.2em] text-white/50">02 — The mission</p>
+        {/* Slide 2: Hero */}
+        <FlowSection id="hero" aria-label="Hero" style={{ backgroundColor: '#0a0a0a', color: '#fff' }}>
+          <p className="text-xs font-bold uppercase tracking-[0.2em] text-white/50 text-center">02 — Hero</p>
           <hr className="my-[2vw] border-none border-t border-white/20" />
           
-          <div>
-            <h2 className="text-[clamp(2.5rem,8vw,10rem)] font-extrabold leading-[0.85] uppercase tracking-tighter">
-              Discord
-              <br />
-              First
-              <br />
-              Alerts
-            </h2>
+          <div className="flex flex-col lg:flex-row justify-between items-start gap-8 lg:gap-12 my-auto w-full">
+            <div className="flex-1 space-y-6">
+              <h2 className="text-[clamp(3rem,8vw,8rem)] font-extrabold leading-[0.8] uppercase tracking-tighter text-white font-heading">
+                KNOW
+                <br />
+                WHEN
+                <br />
+                IT
+                <br />
+                FAILS.
+              </h2>
+              <p className="max-w-[45ch] text-[clamp(1rem,2vw,1.5rem)] font-normal leading-relaxed text-white/90">
+                Monitor your scheduled jobs and critical application events in real time. Get instant alerts when something goes wrong.
+              </p>
+              <div className="pt-4 flex flex-col sm:flex-row gap-3">
+                <ModernButton href="/sign-up" variant="primary" size="md">
+                  START FREE <ArrowRight className="size-4 ml-1" />
+                </ModernButton>
+                <ModernButton href="#how-it-works" variant="secondary" size="md">
+                  SEE HOW IT WORKS
+                </ModernButton>
+              </div>
+            </div>
+            
+            {/* Product Visualization */}
+            <div className="w-full lg:w-[50%] flex flex-col gap-4 self-center lg:mt-0 mt-8">
+              <div className="relative bg-neutral-900 border border-white/10 rounded-2xl p-6 shadow-2xl overflow-hidden font-sans min-h-[300px]">
+                <div className="flex justify-between items-center pb-4 border-b border-white/5 mb-4 select-none">
+                  <div className="flex items-center gap-2">
+                    <span className="w-2.5 h-2.5 rounded-full bg-red-500 animate-pulse"></span>
+                    <span className="text-xs font-mono tracking-wider text-white/60 uppercase">Live Monitors</span>
+                  </div>
+                  <span className="text-[10px] font-mono text-white/40">3 Active</span>
+                </div>
+
+                {/* Monitors List */}
+                <div className="space-y-3 pb-16">
+                  <div className="flex justify-between items-center bg-white/5 p-3 rounded-lg border border-white/5 hover:border-white/10 transition-colors">
+                    <div className="flex items-center gap-3">
+                      <div className="size-8 rounded-lg bg-emerald-500/10 flex items-center justify-center text-emerald-500">
+                        <Check className="size-4" />
+                      </div>
+                      <div>
+                        <p className="text-xs font-bold text-white font-heading">database-backup</p>
+                        <p className="text-[10px] text-white/50 font-mono">daily @ 00:00 &bull; 2h ago</p>
+                      </div>
+                    </div>
+                    <span className="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 font-mono text-[9px] uppercase tracking-wider font-bold">
+                      Healthy
+                    </span>
+                  </div>
+
+                  <div className="flex justify-between items-center bg-white/5 p-3 rounded-lg border border-white/5 hover:border-white/10 transition-colors">
+                    <div className="flex items-center gap-3">
+                      <div className="size-8 rounded-lg bg-emerald-500/10 flex items-center justify-center text-emerald-500">
+                        <Check className="size-4" />
+                      </div>
+                      <div>
+                        <p className="text-xs font-bold text-white font-heading">stripe-webhook</p>
+                        <p className="text-[10px] text-white/50 font-mono">real-time &bull; 3m ago</p>
+                      </div>
+                    </div>
+                    <span className="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 font-mono text-[9px] uppercase tracking-wider font-bold">
+                      Healthy
+                    </span>
+                  </div>
+
+                  <div className="flex justify-between items-center bg-white/5 p-3 rounded-lg border border-red-500/20 bg-red-500/5 hover:border-red-500/30 transition-colors">
+                    <div className="flex items-center gap-3">
+                      <div className="size-8 rounded-lg bg-red-500/10 flex items-center justify-center text-red-500">
+                        <Zap className="size-4" />
+                      </div>
+                      <div>
+                        <p className="text-xs font-bold text-white font-heading">welcome-emails</p>
+                        <p className="text-[10px] text-white/50 font-mono">hourly &bull; 10m ago</p>
+                      </div>
+                    </div>
+                    <span className="px-2 py-0.5 rounded bg-red-500/20 text-red-400 font-mono text-[9px] uppercase tracking-wider font-bold animate-pulse">
+                      Failing
+                    </span>
+                  </div>
+                </div>
+
+                {/* Overlapping Discord Notification */}
+                <div className="absolute bottom-4 right-4 left-4 md:right-4 md:w-[320px] bg-[#313338] border border-black/30 rounded-xl p-4 shadow-2xl border-l-[4px] border-l-red-500">
+                  <div className="flex items-start gap-3">
+                    <div className="w-8 h-8 rounded-full bg-red-500/10 flex items-center justify-center text-red-500 shrink-0">
+                      <Bell className="size-4" />
+                    </div>
+                    <div className="space-y-1">
+                      <div className="flex items-center gap-1.5">
+                        <span className="text-xs font-bold text-white">CronGuard</span>
+                        <span className="bg-[#5865F2] text-white text-[8px] font-bold px-1 py-0.2 rounded uppercase">BOT</span>
+                        <span className="text-[9px] text-white/40">Today at 12:35 PM</span>
+                      </div>
+                      <p className="text-xs font-bold text-red-400 font-heading">🔴 Alert: welcome-emails failed</p>
+                      <p className="text-[9px] text-white/70 font-mono leading-tight">
+                        Job did not ping within its scheduled window of 1 hour.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
           
-          <hr className="my-[2vw] border-none border-t border-white/20" />
-          <p className="max-w-[50ch] text-[clamp(1rem,2vw,1.75rem)] font-normal leading-relaxed text-white/90">
-            A developer-first monitoring system. We are rewriting the rules of SaaS tracking — making it instant, collaborative, and beautiful.
-          </p>
-          
-          <hr className="my-[2vw] border-none border-t border-white/20" />
-          
-          <div className="flex flex-wrap gap-[3vw]">
-            <div className="min-w-[180px] flex-1">
-              <p className="mb-2 text-sm font-bold uppercase tracking-wider text-primary">Real-time Alerts</p>
-              <p className="text-[clamp(0.85rem,1.3vw,1.05rem)] leading-relaxed opacity-75">
-                Instant Discord notifications the moment events happen. No delay, no lost events.
-              </p>
-            </div>
-            <div className="min-w-[180px] flex-1">
-              <p className="mb-2 text-sm font-bold uppercase tracking-wider text-primary">Easy Integration</p>
-              <p className="text-[clamp(0.85rem,1.3vw,1.05rem)] leading-relaxed opacity-75">
-                Simple API that works with any language or framework. Integrate in under 5 minutes.
-              </p>
-            </div>
-            <div className="min-w-[180px] flex-1">
-              <p className="mb-2 text-sm font-bold uppercase tracking-wider text-primary">Live Analytics</p>
-              <p className="text-[clamp(0.85rem,1.3vw,1.05rem)] leading-relaxed opacity-75">
-                Track and visualize your SaaS metrics in real-time. Spot trends as they happen.
-              </p>
-            </div>
-          </div>
-          
-          <hr className="my-[2vw] border-none border-t border-white/20" />
-          
-          <div className="flex flex-wrap gap-[3vw]">
-            <div className="min-w-[180px] flex-1">
-              <p className="mb-2 text-sm font-bold uppercase tracking-wider text-primary">Secure</p>
-              <p className="text-[clamp(0.85rem,1.3vw,1.05rem)] leading-relaxed opacity-75">
-                Enterprise-grade security and authentication. Your event data remains private.
-              </p>
-            </div>
-            <div className="min-w-[180px] flex-1">
-              <p className="mb-2 text-sm font-bold uppercase tracking-wider text-primary">Lightning Fast</p>
-              <p className="text-[clamp(0.85rem,1.3vw,1.05rem)] leading-relaxed opacity-75">
-                Sub-second delivery to your Discord channels. Average latency is less than 50ms.
-              </p>
-            </div>
-            <div className="min-w-[180px] flex-1">
-              <p className="mb-2 text-sm font-bold uppercase tracking-wider text-primary">Team Ready</p>
-              <p className="text-[clamp(0.85rem,1.3vw,1.05rem)] leading-relaxed opacity-75">
-                Invite your co-founders and developers to keep the entire team in the loop.
-              </p>
-            </div>
-          </div>
-          
-          <hr className="my-[2vw] border-none border-t border-white/20" />
-          <p className="mt-auto ml-auto max-w-[50ch] text-right text-[clamp(1rem,2vw,1.75rem)] font-normal leading-relaxed text-white/50">
-            Every alert is designed to celebrate progress and keep your team aligned.
-          </p>
+          <hr className="mt-auto mb-[2vw] border-none border-t border-white/20" />
         </FlowSection>
 
-        {/* Slide 3: How It Works */}
+        {/* Slide 3: Problem / Value */}
+        <FlowSection id="problem" aria-label="Problem" style={{ backgroundColor: '#000000', color: '#fff' }}>
+          <p className="text-xs font-bold uppercase tracking-[0.2em] text-white/50 text-center">03 — Problem</p>
+          <hr className="my-[2vw] border-none border-t border-white/20" />
+          
+          <div className="flex flex-col items-center justify-center text-center max-w-4xl mx-auto my-auto space-y-8 w-full">
+            <div className="space-y-6">
+              <h2 className="text-[clamp(3.5rem,9vw,9rem)] font-extrabold leading-[0.8] uppercase tracking-tighter text-white font-heading">
+                STOP
+                <br />
+                GUESSING.
+                <br />
+                START
+                <br />
+                MONITORING.
+              </h2>
+              <p className="max-w-[45ch] text-[clamp(1.1rem,2.2vw,1.6rem)] font-normal leading-relaxed text-white/80 mx-auto">
+                Developers shouldn&apos;t have to discover failed jobs after users report them. CronGuard alerts you the second a job misses its window.
+              </p>
+            </div>
+          </div>
+          
+          <hr className="mt-auto mb-[2vw] border-none border-t border-white/20" />
+        </FlowSection>
+
+        {/* Slide 4: Product Showcase */}
+        <FlowSection id="showcase" aria-label="Showcase" style={{ backgroundColor: '#1A3DE8', color: '#fff' }}>
+          <p className="text-xs font-bold uppercase tracking-[0.2em] text-white/50 text-center">04 — Showcase</p>
+          <hr className="my-[2vw] border-none border-t border-white/20" />
+          
+          <div className="flex flex-col items-center justify-center text-center max-w-5xl mx-auto my-auto space-y-8 w-full">
+            <div className="space-y-4">
+              <h2 className="text-[clamp(2.2rem,6vw,4rem)] font-extrabold tracking-tight uppercase leading-none font-heading text-white">
+                RELIABLE MONITORING INTERFACE
+              </h2>
+              <p className="max-w-[55ch] text-[clamp(0.95rem,1.8vw,1.25rem)] text-white/80 mx-auto font-heading">
+                A clean visual timeline of your background executions. Spot success states and failure events instantly.
+              </p>
+            </div>
+
+            {/* Dashboard Mockup */}
+            <div className="w-full bg-[#0a0a0a] rounded-xl border border-white/10 shadow-2xl p-4 md:p-6 overflow-hidden max-w-4xl text-left font-sans">
+              <div className="flex justify-between items-center pb-4 border-b border-white/5 mb-4">
+                <div className="flex items-center gap-3">
+                  <div className="flex gap-1.5">
+                    <span className="w-2.5 h-2.5 rounded-full bg-red-500/80"></span>
+                    <span className="w-2.5 h-2.5 rounded-full bg-yellow-500/80"></span>
+                    <span className="w-2.5 h-2.5 rounded-full bg-green-500/80"></span>
+                  </div>
+                  <span className="text-xs text-white/50 font-mono">dashboard.cronguard.sh</span>
+                </div>
+                <div className="text-[10px] text-white/40 font-mono">Uptime: 99.98%</div>
+              </div>
+
+              {/* Event Timeline Grid */}
+              <div className="space-y-4">
+                {/* Row 1 */}
+                <div className="bg-white/5 p-4 rounded-lg flex flex-col md:flex-row justify-between md:items-center gap-3">
+                  <div className="space-y-1">
+                    <span className="text-[9px] font-mono text-white/40 uppercase tracking-widest">Category: Backups</span>
+                    <h4 className="text-sm font-bold text-white">s3-asset-backup</h4>
+                  </div>
+                  {/* Visual dots timeline */}
+                  <div className="flex gap-1 items-center">
+                    {[...Array(12)].map((_, i) => (
+                      <span key={i} className={`w-2.5 h-6 rounded-sm ${i === 8 ? 'bg-red-500 animate-pulse' : 'bg-emerald-500/80'}`} />
+                    ))}
+                  </div>
+                  <div className="text-right">
+                    <p className="text-xs font-bold text-red-400">1 Failure today</p>
+                    <p className="text-[9px] text-white/30 font-mono">Last check: 12m ago</p>
+                  </div>
+                </div>
+
+                {/* Row 2 */}
+                <div className="bg-white/5 p-4 rounded-lg flex flex-col md:flex-row justify-between md:items-center gap-3">
+                  <div className="space-y-1">
+                    <span className="text-[9px] font-mono text-white/40 uppercase tracking-widest">Category: Payments</span>
+                    <h4 className="text-sm font-bold text-white">stripe-webhook-listener</h4>
+                  </div>
+                  {/* Visual dots timeline */}
+                  <div className="flex gap-1 items-center">
+                    {[...Array(12)].map((_, i) => (
+                      <span key={i} className="w-2.5 h-6 rounded-sm bg-emerald-500/80" />
+                    ))}
+                  </div>
+                  <div className="text-right">
+                    <p className="text-xs font-bold text-emerald-400">100% Success</p>
+                    <p className="text-[9px] text-white/30 font-mono">Last check: 2m ago</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <hr className="mt-auto mb-[2vw] border-none border-t border-white/20" />
+        </FlowSection>
+
+        {/* Slide 5: How It Works */}
         <FlowSection id="how-it-works" aria-label="How it works" style={{ backgroundColor: '#F5F0E8', color: '#000' }}>
-          <p className="text-xs font-bold uppercase tracking-[0.2em] text-black/50">03 — How it works</p>
+          <p className="text-xs font-bold uppercase tracking-[0.2em] text-black/50 text-center">05 — How it works</p>
           <hr className="my-[2vw] border-none border-t border-black/20" />
           
-          <div className="flex flex-col lg:flex-row justify-between items-start gap-8 lg:gap-12">
+          <div className="flex flex-col lg:flex-row justify-between items-start gap-8 lg:gap-12 my-auto w-full">
             <div className="flex-1">
-              <h2 className="text-[clamp(2.5rem,8vw,10rem)] font-extrabold leading-[0.85] uppercase tracking-tighter text-black">
+              <h2 className="text-[clamp(2.5rem,8vw,10rem)] font-extrabold leading-[0.85] uppercase tracking-tighter text-black font-heading">
                 Code.
                 <br />
                 Send.
@@ -169,7 +309,7 @@ export function LandingPageContent() {
             
             <div className="w-full lg:w-[45%] max-w-xl self-center">
               <div className="border border-black/15 bg-black/5 overflow-hidden shadow-sm">
-                <div className="flex items-center gap-1.5 px-3 py-2 bg-black/10 border-b border-black/15">
+                <div className="flex items-center gap-1.5 px-3 py-2 bg-black/10 border-b border-black/15 select-none">
                   <div className="flex gap-1">
                     <div className="w-2 h-2 rounded-full bg-[#DC143C]" />
                     <div className="w-2 h-2 rounded-full bg-black/35" />
@@ -179,13 +319,9 @@ export function LandingPageContent() {
                 </div>
                 <div className="overflow-x-auto text-[9px] sm:text-xs font-mono p-4 bg-white/70">
                   <SyntaxHighlighter
-                    language="typescript"
+                    language="javascript"
                     style={oneLight}
-                    customStyle={{
-                      background: "transparent",
-                      margin: 0,
-                      padding: 0,
-                    }}
+                    customStyle={{ background: "transparent", padding: 0 }}
                   >
                     {codeSnippet}
                   </SyntaxHighlighter>
@@ -193,119 +329,101 @@ export function LandingPageContent() {
               </div>
             </div>
           </div>
-          
-          <hr className="my-[2vw] border-none border-t border-black/20" />
-          
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-[3vw]">
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-10 border-t border-black/10 w-full mt-auto">
             <div>
-              <p className="mb-2 text-sm font-bold uppercase tracking-wider text-black">01 — Hook</p>
-              <p className="text-[clamp(0.85rem,1.3vw,1.05rem)] leading-relaxed opacity-75 text-black/80">
-                Connect your Discord webhook in seconds.
-              </p>
+              <p className="text-sm font-bold uppercase tracking-wider text-black">01 — CONNECT</p>
+              <p className="text-xs text-black/77 mt-1 font-medium">Connect your application or scheduled job.</p>
             </div>
             <div>
-              <p className="mb-2 text-sm font-bold uppercase tracking-wider text-black">02 — Key</p>
-              <p className="text-[clamp(0.85rem,1.3vw,1.05rem)] leading-relaxed opacity-75 text-black/80">
-                Generate your secure API authorization token.
-              </p>
+              <p className="text-sm font-bold uppercase tracking-wider text-black">02 — MONITOR</p>
+              <p className="text-xs text-black/77 mt-1 font-medium">CronGuard receives and tracks events.</p>
             </div>
             <div>
-              <p className="mb-2 text-sm font-bold uppercase tracking-wider text-black">03 — POST</p>
-              <p className="text-[clamp(0.85rem,1.3vw,1.05rem)] leading-relaxed opacity-75 text-black/80">
-                Call our endpoint with a simple JSON payload.
-              </p>
-            </div>
-            <div>
-              <p className="mb-2 text-sm font-bold uppercase tracking-wider text-black">04 — Customize</p>
-              <p className="text-[clamp(0.85rem,1.3vw,1.05rem)] leading-relaxed opacity-75 text-black/80">
-                Attach metadata like plan tiers and email addresses.
-              </p>
-            </div>
-            <div>
-              <p className="mb-2 text-sm font-bold uppercase tracking-wider text-black">05 — Celebrate</p>
-              <p className="text-[clamp(0.85rem,1.3vw,1.05rem)] leading-relaxed opacity-75 text-black/80">
-                Watch conversions and milestones roll in.
-              </p>
-            </div>
-            <div>
-              <p className="mb-2 text-sm font-bold uppercase tracking-wider text-black">06 — Scale</p>
-              <p className="text-[clamp(0.85rem,1.3vw,1.05rem)] leading-relaxed opacity-75 text-black/80">
-                Distribute alerts across dedicated channels.
-              </p>
+              <p className="text-sm font-bold uppercase tracking-wider text-black">03 — ALERT</p>
+              <p className="text-xs text-black/77 mt-1 font-medium">Get notified immediately when something fails.</p>
             </div>
           </div>
         </FlowSection>
 
-        {/* Slide 4: The Vision / Stats */}
-        <FlowSection id="vision" aria-label="The vision" style={{ backgroundColor: '#1A3DE8', color: '#fff' }}>
-          <p className="text-xs font-bold uppercase tracking-[0.2em] text-white/50">04 — The vision</p>
-          <hr className="my-[2vw] border-none border-t border-white/30" />
+        {/* Slide 6: Features */}
+        <FlowSection id="features" aria-label="Features" style={{ backgroundColor: '#000000', color: '#fff' }}>
+          <p className="text-xs font-bold uppercase tracking-[0.2em] text-white/50 text-center">06 — Features</p>
+          <hr className="my-[2vw] border-none border-t border-white/20" />
           
-          <div>
-            <h2 className="text-[clamp(2.5rem,8vw,10rem)] font-extrabold leading-[0.85] uppercase tracking-tighter">
-              Future
-              <br />
-              Of
-              <br />
-              Metrics
+          <div className="my-auto w-full">
+            <h2 className="text-[clamp(2.5rem,6vw,4rem)] font-extrabold uppercase tracking-tighter text-white font-heading text-center mb-10">
+              BUILT FOR MODERN TEAMS
             </h2>
-          </div>
-          
-          <hr className="my-[2vw] border-none border-t border-white/30" />
-          <p className="max-w-[50ch] text-[clamp(1rem,2vw,1.75rem)] font-normal leading-relaxed text-white/90">
-            Traditional SaaS analytics are stale, expensive, and hidden behind complex dashboards. We&apos;re here to change that — bringing action and celebration to where your team already hangs out.
-          </p>
-          
-          <hr className="my-[2vw] border-none border-t border-white/30" />
-          
-          <div className="flex flex-wrap gap-[3vw]">
-            <div className="min-w-[180px] flex-1">
-              <p className="mb-2 text-[clamp(2rem,6vw,8rem)] font-bold leading-none">10K+</p>
-              <p className="text-[clamp(0.85rem,1.3vw,1.05rem)] leading-relaxed opacity-75">
-                Events tracked by early founders this month.
-              </p>
-            </div>
-            <div className="min-w-[180px] flex-1">
-              <p className="mb-2 text-[clamp(2rem,6vw,8rem)] font-bold leading-none">50ms</p>
-              <p className="text-[clamp(0.85rem,1.3vw,1.05rem)] leading-relaxed opacity-75">
-                Average latency for event processing and dispatch.
-              </p>
-            </div>
-            <div className="min-w-[180px] flex-1">
-              <p className="mb-2 text-[clamp(2rem,6vw,8rem)] font-bold leading-none">99.9%</p>
-              <p className="text-[clamp(0.85rem,1.3vw,1.05rem)] leading-relaxed opacity-75">
-                API availability and uptime guaranteed.
-              </p>
-            </div>
-          </div>
-          
-          <hr className="my-[2vw] border-none border-t border-white/30" />
-          
-          <div className="flex flex-wrap gap-[3vw]">
-            <div className="min-w-[180px] flex-1">
-              <p className="mb-2 text-sm font-bold uppercase tracking-wider text-white">Open Access</p>
-              <p className="text-[clamp(0.85rem,1.3vw,1.05rem)] leading-relaxed opacity-75">
-                Start for free, upgrade as your event volumes grow.
-              </p>
-            </div>
-            <div className="min-w-[180px] flex-1">
-              <p className="mb-2 text-sm font-bold uppercase tracking-wider text-white">Global Edge</p>
-              <p className="text-[clamp(0.85rem,1.3vw,1.05rem)] leading-relaxed opacity-75">
-                Low latency endpoints distributed worldwide.
-              </p>
-            </div>
-            <div className="min-w-[180px] flex-1">
-              <p className="mb-2 text-sm font-bold uppercase tracking-wider text-white">Security First</p>
-              <p className="text-[clamp(0.85rem,1.3vw,1.05rem)] leading-relaxed opacity-75">
-                Encrypted payloads and strict token authorization.
-              </p>
+            
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+              <div className="space-y-2 p-6 border border-white/10 bg-white/5 rounded-xl">
+                <p className="text-primary font-mono text-sm font-bold uppercase tracking-wider">01 &bull; Real-time Monitoring</p>
+                <h4 className="text-lg font-bold text-white font-heading">Event tracking</h4>
+                <p className="text-xs text-white/60 font-medium">Instant tracking of background executions, cron jobs, and webhooks.</p>
+              </div>
+
+              <div className="space-y-2 p-6 border border-white/10 bg-white/5 rounded-xl">
+                <p className="text-primary font-mono text-sm font-bold uppercase tracking-wider">02 &bull; Discord Alerts</p>
+                <h4 className="text-lg font-bold text-white font-heading">Instant Notifications</h4>
+                <p className="text-xs text-white/60 font-medium">Immediate notifications sent to your Discord channels the second a job fails.</p>
+              </div>
+
+              <div className="space-y-2 p-6 border border-white/10 bg-white/5 rounded-xl">
+                <p className="text-primary font-mono text-sm font-bold uppercase tracking-wider">03 &bull; Categorization</p>
+                <h4 className="text-lg font-bold text-white font-heading">Group Events</h4>
+                <p className="text-xs text-white/60 font-medium">Organize alerts and monitors into clear categories (e.g. database, auth, billing).</p>
+              </div>
+
+              <div className="space-y-2 p-6 border border-white/10 bg-white/5 rounded-xl">
+                <p className="text-primary font-mono text-sm font-bold uppercase tracking-wider">04 &bull; Usage Tracking</p>
+                <h4 className="text-lg font-bold text-white font-heading">Volume Statistics</h4>
+                <p className="text-xs text-white/60 font-medium">Keep tabs on performance metrics, runs count, and monthly event limits.</p>
+              </div>
+
+              <div className="space-y-2 p-6 border border-white/10 bg-white/5 rounded-xl">
+                <p className="text-primary font-mono text-sm font-bold uppercase tracking-wider">05 &bull; Event History</p>
+                <h4 className="text-lg font-bold text-white font-heading">Audit Trails</h4>
+                <p className="text-xs text-white/60 font-medium">Persistent historical logs of your jobs execution for compliance and debugging.</p>
+              </div>
+
+              <div className="space-y-2 p-6 border border-white/10 bg-white/5 rounded-xl">
+                <p className="text-primary font-mono text-sm font-bold uppercase tracking-wider">06 &bull; Analytics</p>
+                <h4 className="text-lg font-bold text-white font-heading">Performance Reports</h4>
+                <p className="text-xs text-white/60 font-medium">Uptime charts and latency summaries detailing how healthy your services remain.</p>
+              </div>
             </div>
           </div>
+          
+          <hr className="mt-auto mb-[2vw] border-none border-t border-white/20" />
         </FlowSection>
 
-        {/* Slide 5: Testimonials */}
+        {/* Slide 7: Vision / About */}
+        <FlowSection id="vision" aria-label="Vision" style={{ backgroundColor: '#1A3DE8', color: '#fff' }}>
+          <p className="text-xs font-bold uppercase tracking-[0.2em] text-white/50 text-center">07 — Vision</p>
+          <hr className="my-[2vw] border-none border-t border-white/20" />
+          
+          <div className="flex flex-col items-center justify-center text-center max-w-4xl mx-auto my-auto space-y-8 w-full">
+            <div className="space-y-6">
+              <h2 className="text-[clamp(3.5rem,9vw,9rem)] font-extrabold leading-[0.8] uppercase tracking-tighter text-white font-heading">
+                BUILD
+                <br />
+                WITH
+                <br />
+                CONFIDENCE.
+              </h2>
+              <p className="max-w-[45ch] text-[clamp(1.1rem,2.2vw,1.6rem)] font-normal leading-relaxed text-white/80 mx-auto">
+                CronGuard gives developers visibility into background jobs and application events without constantly checking logs.
+              </p>
+            </div>
+          </div>
+          
+          <hr className="mt-auto mb-[2vw] border-none border-t border-white/20" />
+        </FlowSection>
+
+        {/* Slide 8: Testimonials */}
         <FlowSection id="testimonials" aria-label="Testimonials" style={{ backgroundColor: '#ffffff', color: '#000000' }}>
-          <p className="text-xs font-bold uppercase tracking-[0.2em] text-black/50">05 — Testimonials</p>
+          <p className="text-xs font-bold uppercase tracking-[0.2em] text-black/50 text-center">08 — Testimonials</p>
           <hr className="my-[2vw] border-none border-t border-black/20" />
           <div className="my-auto overflow-y-auto max-h-[80vh] w-full">
             <ClientFeedback />
@@ -313,90 +431,7 @@ export function LandingPageContent() {
           <hr className="mt-auto mb-[2vw] border-none border-t border-black/20" />
         </FlowSection>
 
-        {/* Slide 6: Join Us */}
-        <FlowSection aria-label="Join us" style={{ backgroundColor: '#000', color: '#fff' }}>
-          <p className="text-xs font-bold uppercase tracking-[0.2em] text-white/50">06 — Join us</p>
-          <hr className="my-[2vw] border-none border-t border-white/20" />
-          
-          <div className="flex flex-col lg:flex-row justify-between items-start gap-8 lg:gap-12">
-            <div className="flex-1 space-y-6">
-              <h2 className="text-[clamp(2.5rem,8vw,10rem)] font-extrabold leading-[0.85] uppercase tracking-tighter">
-                Ready
-                <br />
-                To
-                <br />
-                Begin?
-              </h2>
-              <p className="max-w-[50ch] text-[clamp(1rem,2vw,1.75rem)] font-normal leading-relaxed text-white/80">
-                Take control of your SaaS events. Join now and let&apos;s celebrate your growth together.
-              </p>
-              <div className="pt-4 flex flex-col sm:flex-row gap-3">
-                <ModernButton href="/sign-up" variant="primary" size="md">
-                  Start for Free <ArrowRight className="size-4 ml-1" />
-                </ModernButton>
-                <ModernButton href="#pricing" variant="secondary" size="md">
-                  View Pricing
-                </ModernButton>
-              </div>
-            </div>
-            
-            <div className="w-full lg:w-[45%] flex flex-col gap-4 self-center lg:mt-0 mt-6">
-              <div className="border border-white/10 bg-white/5 p-5">
-                <div className="flex gap-0.5 mb-2">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="size-3 text-primary fill-primary" />
-                  ))}
-                </div>
-                <p className="text-xs sm:text-sm text-white/80 mb-3 italic">
-                  &ldquo;CronGuard has been a game-changer for me. Seeing sales pop up in real-time in our Discord is incredibly motivating.&rdquo;
-                </p>
-                <div className="flex items-center gap-2">
-                  <Image
-                    src="/user-2.png"
-                    alt="Freya Larsson"
-                    width={30}
-                    height={30}
-                    className="border border-white/10 w-7 h-7 shadow-sm"
-                  />
-                  <div>
-                    <p className="font-bold text-white text-xs">
-                      Freya Larsson
-                    </p>
-                    <p className="text-[9px] text-white/50 font-mono">@itsfreya</p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="border border-white/10 bg-white/5 p-5">
-                <div className="flex gap-0.5 mb-2">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="size-3 text-primary fill-primary" />
-                  ))}
-                </div>
-                <p className="text-xs sm:text-sm text-white/80 mb-3 italic">
-                  &ldquo;CronGuard just works. Incredibly fast integration and the alerts are instant. Easily makes it our favorite new tool.&rdquo;
-                </p>
-                <div className="flex items-center gap-2">
-                  <Image
-                    src="/user-1.png"
-                    alt="Kai Durant"
-                    width={30}
-                    height={30}
-                    className="border border-white/10 w-7 h-7 shadow-sm"
-                  />
-                  <div>
-                    <p className="font-bold text-white text-xs">
-                      Kai Durant
-                    </p>
-                    <p className="text-[9px] text-white/50 font-mono">@kdurant_</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </FlowSection>
-
-        {/* Slide 7: Pricing */}
+        {/* Slide 9: Pricing */}
         <FlowSection id="pricing" aria-label="Pricing" style={{ backgroundColor: '#ffffff', color: '#000000' }} className="bg-[radial-gradient(#e5e7eb_1.5px,transparent_1.5px)] [background-size:24px_24px] flex flex-col justify-between">
           <div className="w-full text-center mt-2">
             <p className="text-blue-600 font-extrabold uppercase tracking-widest text-xs sm:text-sm font-mono">Simple Pricing</p>
@@ -559,6 +594,36 @@ export function LandingPageContent() {
           <div className="mb-2 w-full text-center text-xs font-mono uppercase tracking-wider text-black/35 select-none">
             ✦ NO CREDIT CARD REQUIRED TO TRY
           </div>
+        </FlowSection>
+
+        {/* Slide 10: Final CTA */}
+        <FlowSection id="final-cta" aria-label="Join us" style={{ backgroundColor: '#000000', color: '#fff' }}>
+          <p className="text-xs font-bold uppercase tracking-[0.2em] text-white/50 text-center">10 — Join us</p>
+          <hr className="my-[2vw] border-none border-t border-white/20" />
+          
+          <div className="flex flex-col items-center justify-center text-center max-w-4xl mx-auto my-auto space-y-8 w-full">
+            <div className="space-y-6">
+              <h2 className="text-[clamp(3.5rem,9vw,9rem)] font-extrabold leading-[0.8] uppercase tracking-tighter text-white font-heading">
+                READY
+                <br />
+                TO KNOW
+                <br />
+                WHEN IT
+                <br />
+                FAILS?
+              </h2>
+              <p className="max-w-[45ch] text-[clamp(1.1rem,2.2vw,1.6rem)] font-normal leading-relaxed text-white/80 mx-auto">
+                Take control of your background jobs and application events. Get started in under 5 minutes.
+              </p>
+              <div className="pt-4">
+                <ModernButton href="/sign-up" variant="primary" size="lg" className="bg-white text-black hover:bg-white/90">
+                  START FREE
+                </ModernButton>
+              </div>
+            </div>
+          </div>
+          
+          <hr className="mt-auto mb-[2vw] border-none border-t border-white/20" />
         </FlowSection>
       </FlowArt>
 
