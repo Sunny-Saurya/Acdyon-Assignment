@@ -1,41 +1,20 @@
 # Design Decisions
 
-## 1. Why did I choose this approach?
 
-I chose a bold, typography-driven landing page instead of a
-traditional SaaS layout.
 
-CronGuard is a developer-focused monitoring product, so I wanted
-the homepage to feel technical and distinctive while keeping the
-product itself easy to understand.
+## 1. Why did you choose to adopt this solution?
 
-I used strong typography, high-contrast sections, and a dark/orange
-visual identity to create a memorable visual experience.
+When choosing the design I wanted to pursue, I decided to go with a more typography-centric approach for the landing page. I did not want to use the traditional SaaS look and feel. CronGuard is primarily intended for developers, and it had to appear technically advanced but also user-friendly. The landing page needed to look unique, engaging and provide the user with an important insight about what the product does – monitoring of cron jobs with notifications in case of an error.
 
-The homepage focuses on the core value proposition of CronGuard:
-monitoring scheduled jobs and receiving alerts when something goes
-wrong.
+
 
 ## 2. What is one tradeoff you made?
 
-I prioritized visual storytelling and product presentation over
-adding a large number of sections.
+The main opportunity cost was the selection of the landing page structure. I selected a visual-first approach and missed the chance to build a multi-page story or include more details about the product. Instead of adding more sections with descriptions I spent my time and effort on making the page visually appealing, responsive, readable and engaging.
 
-Instead of building many detailed pages or complex interactions,
-I focused the available development time on responsive behavior,
-typography, spacing, and the product visualization.
 
-This allowed me to make the homepage more polished while keeping
-the implementation maintainable.
 
 ## 3. How did you use and verify AI output?
 
-I used AI tools to help explore design ideas, generate initial
-implementation code, and accelerate development.
+The AI-generated code was utilized when brainstorming ideas for the design, developing the prototype, and implementing specific elements. The code was adjusted manually to meet design needs and was verified for functionality before launching the landing page. The Antigravity tool was helpful in this stage, but the implemented code was not used directly. Finally, I was able to review the responsive behavior of the landing page, inspect the behavior and appearance of individual elements and confirm that they behave as expected. The final verification step was taking time to look at the page on multiple viewports and fixing what I thought looked good on my local viewport but appeared broken elsewhere.
 
-I reviewed and modified the generated code rather than using it
-without verification.
-
-I tested the homepage locally across different viewport sizes,
-checked the responsive layout, reviewed the interactions, and
-fixed issues manually before deployment.
