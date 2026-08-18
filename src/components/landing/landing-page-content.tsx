@@ -43,61 +43,33 @@ export function LandingPageContent() {
         
         {/* Slide 1: Who We Are / Hero */}
         <FlowSection aria-label="Who we are" style={{ backgroundColor: '#FD5200', color: '#fff' }}>
-          <p className="text-xs font-bold uppercase tracking-[0.2em] text-white/70"></p>
+          <p className="text-xs font-bold uppercase tracking-[0.2em] text-white/50 text-center">01 — Who we are</p>
           <hr className="my-[2vw] border-none border-t border-white/20" />
           
-          <div className="flex flex-col lg:flex-row justify-between items-start gap-8 lg:gap-12 my-auto">
-            <div className="flex-1 space-y-6">
-              <div className="inline-flex items-center gap-1.5 border border-white/20 bg-white/10 text-white px-3 py-1 font-heading text-xs uppercase tracking-wider">
+          <div className="flex flex-col items-center justify-center text-center max-w-4xl mx-auto my-auto space-y-8 w-full">
+            <div className="space-y-6">
+              <div className="inline-flex items-center gap-1.5 border border-white/20 bg-white/10 text-white px-3 py-1 font-heading text-xs uppercase tracking-wider mx-auto">
                 <Zap className="size-3 text-white" />
                 <span>System Status: Online</span>
               </div>
-              <h1 className="text-[clamp(2.5rem,8vw,10rem)] font-extrabold leading-[0.85] uppercase tracking-tighter text-white">
+              <h1 className="text-[clamp(3.5rem,10vw,8.5rem)] font-extrabold leading-[0.8] uppercase tracking-tighter text-white">
                 Monitor
                 <br />
                 SaaS
                 <br />
                 Events
               </h1>
-              <p className="max-w-[45ch] text-[clamp(1rem,2vw,1.75rem)] font-normal leading-relaxed text-white/90">
+              <p className="max-w-[55ch] text-[clamp(1.1rem,2.2vw,1.6rem)] font-normal leading-relaxed text-white/90 mx-auto">
                 We believe SaaS founders deserve clear, instant visibility into their business. No complex dashboards, no delayed emails — just pure live events sent straight to your Discord channel.
               </p>
-            </div>
-            
-            <div className="w-full lg:w-[45%] max-w-xl self-center lg:mt-0 mt-6">
-              <GlassCard variant="neo" className="p-1 sm:p-2 bg-black/40 border-white/10">
-                <MockDiscordUI>
-                  <AnimatedList>
-                    <DiscordMessage
-                      avatarSrc="/brand-asset-profile-picture.png"
-                      avatarAlt="CronGuard Avatar"
-                      username="CronGuard"
-                      timestamp="Today at 12:35PM"
-                      badgeText="SignUp"
-                      badgeColor="#DC143C"
-                      title="👤 New user signed up"
-                      content={{
-                        name: "Mateo Ortiz",
-                        email: "m.ortiz19@gmail.com",
-                      }}
-                    />
-                    <DiscordMessage
-                      avatarSrc="/brand-asset-profile-picture.png"
-                      avatarAlt="CronGuard Avatar"
-                      username="CronGuard"
-                      timestamp="Today at 12:35PM"
-                      badgeText="Revenue"
-                      badgeColor="#DC143C"
-                      title="💰 Payment received"
-                      content={{
-                        amount: "$49.00",
-                        email: "zoe.martinez2001@email.com",
-                        plan: "PRO",
-                      }}
-                    />
-                  </AnimatedList>
-                </MockDiscordUI>
-              </GlassCard>
+              <div className="pt-6 flex flex-col sm:flex-row justify-center gap-4">
+                <ModernButton href="/sign-up" variant="primary" size="md" className="bg-white text-black hover:bg-white/90">
+                  Start for Free <ArrowRight className="size-4 ml-1" />
+                </ModernButton>
+                <ModernButton href="#features" variant="secondary" size="md">
+                  Explore Features
+                </ModernButton>
+              </div>
             </div>
           </div>
           
