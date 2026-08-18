@@ -18,6 +18,7 @@ import { MockDiscordUI } from "@/components/mock-discord-ui"
 import { AnimatedList } from "@/components/ui/animated-list"
 import { DiscordMessage } from "@/components/discord-message"
 import ClientFeedback from "@/components/ui/testimonial"
+import { CustomCursor } from "@/components/ui/custom-cursor"
 
 const codeSnippet = `await fetch("https://cronguard.sh/api/v1/events", {
   method: "POST",
@@ -37,6 +38,7 @@ const codeSnippet = `await fetch("https://cronguard.sh/api/v1/events", {
 export function LandingPageContent() {
   return (
     <GSAPProvider>
+      <CustomCursor />
       <ScrollProgress />
       
       <FlowArt aria-label="CronGuard Product Presentation">
@@ -52,7 +54,16 @@ export function LandingPageContent() {
                 <Zap className="size-3 text-white" />
                 <span>System Status: Online</span>
               </div>
-              <h1 className="text-[clamp(3.5rem,10vw,8.5rem)] font-extrabold leading-[0.8] uppercase tracking-tighter text-white">
+              <h1 
+                style={{ 
+                  fontFamily: '"Wix Madefor Display", sans-serif',
+                  fontSize: '136px',
+                  fontWeight: 800,
+                  lineHeight: '108.8px',
+                  color: 'rgb(255, 255, 255)',
+                }}
+                className="uppercase tracking-tighter max-md:!text-[clamp(2.5rem,10vw,5.5rem)] max-md:!leading-[1.1] max-md:!font-extrabold"
+              >
                 Monitor
                 <br />
                 SaaS
